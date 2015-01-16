@@ -1,0 +1,26 @@
+{
+    "name": "helhum/demo-package",
+    "description": "Demo Package for training",
+    "keywords": ["package", "demo", "training"],
+    "homepage": "https://github.com/helhum/demo-package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Helmut Hummel",
+            "email": "info@helhum.io",
+            "homepage": "http://insight.helhum.io"
+        }
+    ],
+    "bin": ["bin/demo"],
+    "require": {
+        "php": ">=5.3.2",
+        "helhum/demo-dependency": "1.0.x-dev"
+    },
+    "autoload": {
+        "psr-4": { "Helhum\\DemoPackage": "Classes/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Helhum\\DemoPackage\\Test": "Tests/" }
+    }
+}
