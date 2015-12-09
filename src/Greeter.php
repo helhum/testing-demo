@@ -11,6 +11,10 @@ class Greeter
             return 'Hello World';
         }
 
+        \Assert\Assertion::notEmpty($name);
+        \Assert\Assertion::minLength($name, 3);
+        \Assert\Assertion::maxLength($name, 100);
+
         return sprintf('Hello %s', $name);
     }
 
