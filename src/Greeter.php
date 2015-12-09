@@ -25,6 +25,9 @@ class Greeter
             return 'Hello World';
         }
 
+        \Assert\Assertion::notEmpty($name);
+        \Assert\Assertion::string($name);
+
         return sprintf('Hello %s', $name);
     }
 
