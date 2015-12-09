@@ -16,4 +16,13 @@ class GreeterTest extends TestCase
         $greeter = new Greeter();
         self::assertSame('Hello World', $greeter->greet());
     }
+
+    /**
+     * @test
+     */
+    public function greetsNameIfProvided(): void
+    {
+        $greeter = new Greeter();
+        self::assertSame('Hello Helmut', $greeter->greet('Helmut'));
+    }
 }
