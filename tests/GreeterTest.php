@@ -14,4 +14,13 @@ class GreeterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('Hello World', $greeter->greet());
     }
 
+    /**
+     * @test
+     */
+    public function greetsNameIfProvided()
+    {
+        $greeter = new Greeter();
+        $this->assertSame('Hello Helmut', $greeter->greet('Helmut'));
+    }
+
 }

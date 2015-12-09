@@ -15,9 +15,17 @@ namespace Helhum\UnitTesting;
  */
 class Greeter
 {
-    public function greet()
+    /**
+     * @param string $name
+     * @return string
+     */
+    public function greet($name = null)
     {
-        return 'Hello World';
+        if ($name === null) {
+            return 'Hello World';
+        }
+
+        return sprintf('Hello %s', $name);
     }
 
 }
