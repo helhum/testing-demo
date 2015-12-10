@@ -51,7 +51,7 @@ class GroupTest extends \PHPUnit_Framework_TestCase
     public function greetingGreetsUsesGreeterMockCorrectly()
     {
         $memberDummy = $this->getMock('Helhum\\UnitTesting\\Member', array(), array('dummy'));
-        $greeterMock = $this->getMock(Greeter::class);
+        $greeterMock = $this->getMock('Helhum\\UnitTesting\\Greeter');
         $greeterMock->expects($this->exactly(3))->method('greet');
 
         $group = new Group(array($memberDummy, $memberDummy, $memberDummy), $greeterMock);
