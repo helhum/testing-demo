@@ -24,58 +24,58 @@ class GreeterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return array
+     */
+    public function invalidNullValues()
+    {
+        return array(
+            'integer zero' => array(0),
+            'string zero' => array('0'),
+            'empty array' => array([]),
+        );
+    }
+
+    /**
+     * @param mixed $invalidValue
+     *
      * @test
+     * @dataProvider invalidNullValues
+     *
      * @expectedException \Assert\InvalidArgumentException
      * @expectedExceptionCode 14
      */
-    public function throwsExceptionIfEmptyValueIsProvidedOtherThanNull()
+    public function throwsExceptionIfEmptyValueIsProvidedOtherThanNull($invalidValue)
     {
         $greeter = new Greeter();
-        $greeter->greet('');
+        $greeter->greet($invalidValue);
     }
 
     /**
-     * @test
-     * @expectedException \Assert\InvalidArgumentException
-     * @expectedExceptionCode 14
+     * @return array
      */
-    public function throwsExceptionIfEmptyValueIsProvidedOtherThanNull2()
+    public function invalidTypeValues()
     {
-        $greeter = new Greeter();
-        $greeter->greet('0');
+        return array(
+            'integer one' => array(1),
+            'object' => array(new self),
+            'not empty array' => array([1]),
+            'float' => array(3.141592),
+        );
     }
 
     /**
+     * @param mixed $invalidValue
+     *
      * @test
-     * @expectedException \Assert\InvalidArgumentException
-     * @expectedExceptionCode 16
-     */
-    public function throwsExceptionIfNoStringIsProvided()
-    {
-        $greeter = new Greeter();
-        $greeter->greet(1);
-    }
-
-    /**
-     * @test
+     * @dataProvider invalidTypeValues
+     *
      * @expectedException \Assert\InvalidArgumentException
      * @expectedExceptionCode 16
      */
-    public function throwsExceptionIfNoStringIsProvided2()
+    public function throwsExceptionIfNoStringIsProvided($invalidValue)
     {
         $greeter = new Greeter();
-        $greeter->greet([1]);
-    }
-
-    /**
-     * @test
-     * @expectedException \Assert\InvalidArgumentException
-     * @expectedExceptionCode 16
-     */
-    public function throwsExceptionIfNoStringIsProvided3()
-    {
-        $greeter = new Greeter();
-        $greeter->greet(new self);
+        $greeter->greet($invalidValue);
     }
 
 }
