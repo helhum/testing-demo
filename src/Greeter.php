@@ -17,5 +17,4 @@ class Greeter
 
         return sprintf('Hello %s', $name);
     }
-
 }
