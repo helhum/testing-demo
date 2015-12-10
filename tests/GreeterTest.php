@@ -27,47 +27,39 @@ class GreeterTest extends TestCase
         self::assertSame('Hello Helmut', $greeter->greet('Helmut'));
     }
 
-    /**
-     * @test
-     */
-    public function throwsExceptionIfEmptyValueIsProvidedOtherThanNull(): void
+    public static function invalidValuesDataProvider(): array
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionCode(14);
-        $greeter = new Greeter();
-        $greeter->greet('');
+        return [
+            'empty string' => [
+                '',
+                14,
+            ],
+            'zero' => [
+                '0',
+                14,
+            ],
+            'too short string' => [
+                '12',
+                18,
+            ],
+            'too long string' => [
+                'Laoreet sapien sed est nulla neque urna orci himenaeos, rhoncus diam malesuada interdum nostra ac arcu mattis, curabitur at velit gravida aliquet ultrices luctus.',
+                19,
+            ],
+        ];
     }
 
     /**
+     * @param string $inputValue
+     * @param int|string|null $expectedExceptionCode
      * @test
+     * @dataProvider invalidValuesDataProvider
      */
-    public function throwsExceptionIfEmptyValueIsProvidedOtherThanNull2(): void
+    public function throwsExceptionIfEmptyValueIsProvidedOtherThanNull(string $inputValue, $expectedExceptionCode): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionCode(14);
+        $this->expectExceptionCode($expectedExceptionCode);
         $greeter = new Greeter();
-        $greeter->greet('0');
-    }
-
-    /**
-     * @test
-     */
-    public function throwsExceptionIfStringIsTooShort(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionCode(18);
-        $greeter = new Greeter();
-        $greeter->greet('12');
-    }
-
-    /**
-     * @test
-     */
-    public function throwsExceptionIfStringIsTooLong(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionCode(19);
-        $greeter = new Greeter();
-        $greeter->greet('Laoreet sapien sed est nulla neque urna orci himenaeos, rhoncus diam malesuada interdum nostra ac arcu mattis, curabitur at velit gravida aliquet ultrices luctus.');
+        $greeter->greet($inputValue);
     }
 }
