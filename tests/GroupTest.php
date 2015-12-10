@@ -13,7 +13,7 @@ class GroupTest extends \PHPUnit_Framework_TestCase
      */
     public function greetingGreetsAllMembers()
     {
-        $group = new Group([new Member('Helmut'), new Member('Wouter')], new Greeter());
+        $group = new Group(array(new Member('Helmut'), new Member('Wouter')), new Greeter());
         $expectedGreetings = 'Hello Helmut' . chr(10) . 'Hello Wouter';
 
         $this->assertSame($expectedGreetings, $group->greetEverybody());
@@ -24,8 +24,8 @@ class GroupTest extends \PHPUnit_Framework_TestCase
      */
     public function greetingGreetsMemberDummy()
     {
-        $memberDummy = $this->getMock(Member::class, [], ['dummy']);
-        $group = new Group([$memberDummy], new Greeter());
+        $memberDummy = $this->getMock('Helhum\\UnitTesting\\Member', array(), array('dummy'));
+        $group = new Group(array($memberDummy), new Greeter());
         $expectedGreetings = 'Hello World';
 
         $this->assertSame($expectedGreetings, $group->greetEverybody());
@@ -36,10 +36,10 @@ class GroupTest extends \PHPUnit_Framework_TestCase
      */
     public function greetingGreetsMemberStub()
     {
-        $memberDummy = $this->getMock(Member::class, [], ['dummy']);
+        $memberDummy = $this->getMock('Helhum\\UnitTesting\\Member', array(), array('dummy'));
         $memberDummy->expects($this->any())->method('getName')->willReturn('Stub');
 
-        $group = new Group([$memberDummy], new Greeter());
+        $group = new Group(array($memberDummy), new Greeter());
         $expectedGreetings = 'Hello Stub';
 
         $this->assertSame($expectedGreetings, $group->greetEverybody());
@@ -50,11 +50,11 @@ class GroupTest extends \PHPUnit_Framework_TestCase
      */
     public function greetingGreetsUsesGreeterMockCorrectly()
     {
-        $memberDummy = $this->getMock(Member::class, [], ['dummy']);
+        $memberDummy = $this->getMock('Helhum\\UnitTesting\\Member', array(), array('dummy'));
         $greeterMock = $this->getMock(Greeter::class);
         $greeterMock->expects($this->exactly(3))->method('greet');
 
-        $group = new Group([$memberDummy, $memberDummy, $memberDummy], $greeterMock);
+        $group = new Group(array($memberDummy, $memberDummy, $memberDummy), $greeterMock);
         $group->greetEverybody();
     }
 
