@@ -31,7 +31,7 @@ class GreeterTest extends \PHPUnit_Framework_TestCase
         return array(
             'integer zero' => array(0),
             'string zero' => array('0'),
-            'empty array' => array([]),
+            'empty array' => array(array()),
         );
     }
 
@@ -58,7 +58,7 @@ class GreeterTest extends \PHPUnit_Framework_TestCase
         return array(
             'integer one' => array(1),
             'object' => array(new self),
-            'not empty array' => array([1]),
+            'not empty array' => array(array(1)),
             'float' => array(3.141592),
         );
     }
