@@ -1,17 +1,19 @@
 <?php
+declare(strict_types=1);
+
 namespace Helhum\UnitTesting\Tests;
 
 use Helhum\UnitTesting\Greeter;
+use PHPUnit\Framework\TestCase;
 
-class GreeterTest extends \PHPUnit_Framework_TestCase
+class GreeterTest extends TestCase
 {
     /**
      * @test
      */
-    public function greetsTheWorld()
+    public function greetsTheWorld(): void
     {
         $greeter = new Greeter();
-        $this->assertSame('Hello World', $greeter->greet());
+        self::assertSame('Hello World', $greeter->greet());
     }
-
 }

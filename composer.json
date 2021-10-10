@@ -1,34 +1,34 @@
 {
-	"name": "helhum/testing-demo",
-	"description": "unit testing demo package for training",
-	"keywords": [
-		"unit testing",
-		"demo",
-		"training"
-	],
-	"type": "library",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Helmut Hummel",
-			"email": "info@helhum.io",
-			"homepage": "http://insight.helhum.io"
-		}
-	],
-	"require": {
-		"php": ">=5.3.2"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^4.4.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"Helhum\\UnitTesting\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Helhum\\UnitTesting\\Tests\\": "tests/"
-		}
-	}
+    "name": "helhum/testing-demo",
+    "description": "unit testing demo package for training",
+    "keywords": [
+        "unit testing",
+        "demo",
+        "training"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Helmut Hummel",
+            "email": "info@helhum.io",
+            "homepage": "https://insight.helhum.io"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Helhum\\UnitTesting\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Helhum\\UnitTesting\\Tests\\": "tests/"
+        }
+    }
 }
