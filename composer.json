@@ -33,7 +33,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-develop": "12.0.x-dev"
+            "dev-develop": "12.x.x-dev"
         }
     }
 }
